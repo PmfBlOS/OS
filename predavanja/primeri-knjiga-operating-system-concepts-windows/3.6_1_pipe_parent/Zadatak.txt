@@ -1,0 +1,9 @@
+Named pipes onWindows systems provide a richer communication mechanism
+than their UNIX counterparts. Full-duplex communication is allowed,
+and the communicating processes may reside on either the same or different
+machines. Additionally, only byte-oriented data may be transmitted across a
+UNIX FIFO, whereas Windows systems allow either byte- or message-oriented
+data. Named pipes are created with the CreateNamedPipe() function, and a
+client can connect to a named pipe using ConnectNamedPipe(). Communication
+over the named pipe can be accomplished using the ReadFile() and
+WriteFile() functions.

@@ -1,0 +1,9 @@
+Explain the circumstances under which which the line of code marked
+printf("LINE J") will be reached?
+
+
+
+
+
+
+

@@ -1,0 +1,68 @@
+The second part of this project involves modifying the kernel module so that it uses the kernel linked-list data structure.
+
+In Section 1.10, we covered various data structures that are common in
+operating systems. The Linux kernel provides several of these structures. Here, we explore using the circular, doubly linked list that is available to kernel developers. Much of what we discuss is available in the Linux source code — in this instance, the include file <linux/list.h> —and we recommend that you examine this file as you proceed through the following steps.
+
+Initially, you must define a struct containing the elements that are to be inserted in the linked list. The following C struct defines birthdays:
+  struct birthday {
+    int day;
+    int month;
+    int year;
+    struct list_head list;
+  }
+
+Notice the member struct list_head list. The list_head structure is
+defined in the include file <linux/types.h>. Its intention is to embed the linked list within the nodes that comprise the list. This list_head structure is quite simple —it merely holds two members, next and prev, that point to the next and previous entries in the list. By embedding the linked list within the structure, Linux makes it possible to manage the data structure with a series of
+macro functions.
+
+Inserting Elements into the Linked List
+We can declare a list head object, which we use as a reference to the head of the list by using the LIST_HEAD() macro
+  static LIST_HEAD(birthday list);
+This macro defines and initializes the variable birthday list, which is of type struct list head.
+We create and initialize instances of struct birthday as follows:
+  struct_birthday *person;
+  person = kmalloc(sizeof(*person), GFP_KERNEL);
+  person->day = 2;
+  person->month= 8;
+  person->year = 1995;
+  INIT_LIST_HEAD(&person->list);
+The kmalloc() function is the kernel equivalent of the user-level malloc() function for allocating memory, except that kernel memory is being allocated.
+(The GFP_KERNEL flag indicates routine kernel memory allocation.) The macro INIT_LIST_HEAD() initializes the list member in struct birthday. We can then add this instance to the end of the linked list using the list add_tail() macro:
+  list add_tail(&person->list, &birthday_list);
+
+Traversing the Linked List
+Traversing the list involves using the list_for_each_entry() Macro, which accepts three parameters:
+• A pointer to the structure being iterated over
+• A pointer to the head of the list being iterated over
+• The name of the variable containing the list head structure
+The following code illustrates this macro:
+  struct birthday *ptr;
+  list_for_each_entry(ptr, &birthday list, list) 
+  {
+    /* on each iteration ptr points */
+    /* to the next birthday struct */
+  }
+
+Removing Elements from the Linked List
+Removing elements from the list involves using the list del() macro, which is passed a pointer to struct list head
+  list del(struct list_head *element)
+This removes element from the list while maintaining the structure of the remainder of the list.
+Perhaps the simplest approach for removing all elements from a
+linked list is to remove each element as you traverse the list. The macro list_for_each_entry_safe() behaves much like list_for_each_entry() except that it is passed an additional argument that maintains the value of the next pointer of the item being deleted. (This is necessary for preserving the structure of the list.) The following code example illustrates this macro:
+  struct birthday *ptr, *next
+  list_for_each_entry_safe(ptr,next,&birthday list,list) 
+  {
+    /* on each iteration ptr points */
+    /* to the next birthday struct */
+    list del(&ptr->list);
+    kfree(ptr);
+  }
+Notice that after deleting each element, we return memory that was previously allocated with kmalloc() back to the kernel with the call to kfree(). Careful memory management—which includes releasing memory to prevent memory leaks—is crucial when developing kernel-level code.
+
+Assignment
+In the module entry point, create a linked list containing five struct birthday elements. Traverse the linked list and output its contents to the kernel log buffer.
+Invoke the dmesg command to ensure the list is properly constructed once the kernel module has been loaded.
+In the module exit point, delete the elements from the linked list and return the free memory back to the kernel. Again, invoke the dmesg command to check that the list has been removed once the kernel module has been unloaded.
+
+
+

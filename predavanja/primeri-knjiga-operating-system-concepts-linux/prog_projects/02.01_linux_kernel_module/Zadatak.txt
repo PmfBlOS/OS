@@ -1,0 +1,15 @@
+Create program (named simple.c) that illustrates a very basic kernel module that prints appropriate messages when the kernel module is loaded and unloaded.
+
+Loading and Removing Kernel Modules
+Kernel modules are loaded using the insmod command, which is run as follows:
+  sudo insmod simple.ko
+To check whether the module has loaded, enter the lsmod command and search for the module simple. Recall that the module entry point is invoked when the module is inserted into the kernel. To check the contents of this message in the kernel log buffer, enter the command
+  dmesg
+You should see the message "Loading Module." Removing the kernel module involves invoking the rmmod command (notice that the .ko suffix is unnecessary):
+  sudo rmmod simple
+Be sure to check with the dmesg command to ensure the module has been
+removed. 
+Because the kernel log buffer can fill up quickly, it often makes sense to clear the buffer periodically. This can be accomplished as follows:
+  sudo dmesg -c
+
+

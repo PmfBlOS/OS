@@ -1,0 +1,14 @@
+Process creation in Windows.
+
+Processes are created in the Windows API using the CreateProcess() function,
+which is similar to fork() in that a parent creates a new child process.
+However, whereas fork() has the child process inheriting the address space
+of its parent, CreateProcess() requires loading a specified program into the
+address space of the child process at process creation. Furthermore, whereas
+fork() is passed no parameters, CreateProcess() expects no fewer than ten
+parameters.
+
+The C program illustrates the CreateProcess()
+function, which creates a child process that loads the application mspaint.exe.
+We opt for many of the default values of the ten parameters passed to
+CreateProcess().
