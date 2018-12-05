@@ -26,7 +26,7 @@
 
 * [Писмени испити](../pismeni-ispiti/info)
 
-* [[Уисмени испити]](../usmeni-ispiti/info)
+* [Усмени испити](../usmeni-ispiti/info)
 
 ## Аутори веб страна курса
 
