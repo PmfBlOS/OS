@@ -20,17 +20,17 @@
 
     1. [Заглављивање процеса](/prezentacije/os07 - Zaglavljivanje procesa.pdf){:target="_blank"}
 
-    1. Управљање меморијом](/prezentacije/os08 - Upravljanje memorijom.pdf){:target="_blank"}
+    1. [Управљање меморијом](/prezentacije/os08 - Upravljanje memorijom.pdf){:target="_blank"}
 
     1. [Систем датотека](/prezentacije/os09 - Sistem datoteka.pdf){:target="_blank"}
 
     1. [Управљање улазно-излазним уређајима](/prezentacije/os10 - Upravljanje UI uredjajima.pdf){:target="_blank"}
 
-- [Примери Геогебра](https://github.com/PmfBlMNR/MNR/tree/master/predavanja/primeri-GeoGebra){:target="_blank"}
+- [Примери из књиге "Advanced Linux Programming" - Linux](https://github.com/PmfBlOS/OS/tree/master/predavanja/primeri-knjiga-advanced-linux-programming-linux){:target="_blank"}
 
-- [Примери графика](https://github.com/PmfBlMNR/MNR/tree/master/predavanja/primeri-grafika){:target="_blank"}
+- [Примери из књиге "Operating System Concepts" - Linux](https://github.com/PmfBlOS/OS/tree/master/predavanja/primeri-knjiga-operating-system-concepts-linux){:target="_blank"}
 
-- [Примери HTML](https://github.com/PmfBlMNR/MNR/tree/master/predavanja/primeri-html){:target="_blank"}
+- [Примери из књиге "Operating System Concepts" - Windows](https://github.com/PmfBlOS/OS/tree/master/predavanja/primeri-knjiga-operating-system-concepts-windows){:target="_blank"}
 
 ---
 
