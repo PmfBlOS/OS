@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1545646467 source:c:\courses\pmfblos--os\usmeni-ispiti\resenja\najmanjitrougao\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
